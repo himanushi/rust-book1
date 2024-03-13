@@ -1,5 +1,11 @@
+fn myprint<T: std::fmt::Display>(msg: &T) {
+    println!("{}", msg);
+}
+
 fn main() {
-    let mut x = 1;
-    x = x + 1;
-    println!("x = {}", x);
+    let s = "Hello, world!".to_string();
+    let s_ref = &s;
+
+    myprint(s_ref);
+    myprint(s_ref);
 }

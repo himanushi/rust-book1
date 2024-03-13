@@ -1,6 +1,7 @@
-mod module_hello;
-use module_hello::print_hello;
-
 fn main() {
-    print_hello();
+    let x = 1;
+    println!("x = {}", x);
+
+    let y = 2;
+    println!("y = {}", y);
 }

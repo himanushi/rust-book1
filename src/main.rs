@@ -1,8 +1,7 @@
 fn main() {
-    let x;
-    {
-        let y = 1;
-        x = &y;
-    }
-    println!("{}", x)
+    let x = 1;
+    println!("{}", x);
+
+    let x = 2;
+    println!("{}", x);
 }

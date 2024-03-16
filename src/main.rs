@@ -1,33 +1,29 @@
-#[derive(Debug)]
-struct Person {
-    name: String,
-    age: u8,
+enum Sign {
+    Positive,
+    Zero,
+    Negative,
 }
 
-#[derive(Debug)]
-struct Parents<'a, 'b> {
-    father: &'a Person,
-    mother: &'b Person,
+use std::cmp::Ordering;
+
+fn determine_sign(x: i32) -> Sign {
+    match x.cmp(&0) {
+        Ordering::Less => Sign::Negative,
+        Ordering::Equal => Sign::Zero,
+        Ordering::Greater => Sign::Positive,
+    }
 }
 
-impl<'a, 'b> Parents<'a, 'b> {
-    fn new(father: &'a Person, mother: &'b Person) -> Parents<'a, 'b> {
-        Parents { father, mother }
+fn print_sign(s: Sign) {
+    match s {
+        Sign::Positive => println!("+"),
+        Sign::Zero => println!("0"),
+        Sign::Negative => println!("-"),
     }
 }
 
 fn main() {
-    let taro = Person {
-        name: "Taro".to_string(),
-        age: 50,
-    };
-    let hanako = Person {
-        name: "Hanako".to_string(),
-        age: 48,
-    };
-
-    let sato = Parents::new(&taro, &hanako);
-
-    println!("{:?}", sato);
-    println!("{:?}", hanako);
+    print_sign(determine_sign(1));
+    print_sign(determine_sign(-2));
+    print_sign(determine_sign(0));
 }

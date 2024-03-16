@@ -4,10 +4,30 @@ struct Person {
     age: u8,
 }
 
+#[derive(Debug)]
+struct Parents<'a, 'b> {
+    father: &'a Person,
+    mother: &'b Person,
+}
+
+impl<'a, 'b> Parents<'a, 'b> {
+    fn new(father: &'a Person, mother: &'b Person) -> Parents<'a, 'b> {
+        Parents { father, mother }
+    }
+}
+
 fn main() {
     let taro = Person {
-        name: String::from("taro"),
-        age: 10,
+        name: "Taro".to_string(),
+        age: 50,
     };
-    println!("{:?}", taro);
+    let hanako = Person {
+        name: "Hanako".to_string(),
+        age: 48,
+    };
+
+    let sato = Parents::new(&taro, &hanako);
+
+    println!("{:?}", sato);
+    println!("{:?}", hanako);
 }

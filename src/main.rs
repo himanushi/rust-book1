@@ -25,4 +25,7 @@ fn main() {
 
     taro.age_incr_replace(10);
     println!("{}", taro.age);
+
+    let age_incr = Person::age_incr(&taro, 1);
+    println!("{}", age_incr);
 }

@@ -1,15 +1,13 @@
-fn func_ex_unwrap(x: i32) -> Option<i32> {
-    if x >= 0 {
-        Some(x)
-    } else {
-        None
-    }
+fn return_input<T>(x: T) -> T {
+    x
 }
 
 fn main() {
-    let rr1 = func_ex_unwrap(10).unwrap();
-    println!("rr1: {}", rr1);
+    let x1 = return_input(1);
+    let x2 = return_input(String::from("hello"));
+    let x3 = return_input::<f64>(2.0);
 
-    let rr2 = func_ex_unwrap(-5).unwrap();
-    println!("rr2: {}", rr2);
+    println!("x1: {}", x1);
+    println!("x2: {}", x2);
+    println!("x3: {}", x3);
 }

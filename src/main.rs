@@ -1,21 +1,33 @@
-struct GenEx<T> {
-    value: T,
+struct Rectangle {
+    width: f64,
+    height: f64,
 }
 
-impl<T> GenEx<T> {
-    fn return_input(self) -> T {
-        self.value
+impl Rectangle {
+    fn calc_area(&self) -> f64 {
+        self.width * self.height
     }
 }
 
-fn main() {
-    let x1 = GenEx { value: 10 };
-    let x2 = GenEx {
-        value: "Hello".to_string(),
-    };
-    let x3 = GenEx::<f64> { value: 2.0 };
+struct RightTriangle {
+    width: f64,
+    height: f64,
+}
 
-    println!("x1: {}", x1.return_input());
-    println!("x2: {}", x2.return_input());
-    println!("x3: {}", x3.return_input());
+impl RightTriangle {
+    fn calc_area(&self) -> f64 {
+        self.width * self.height * 0.5
+    }
+}
+
+fn area(x: &Rectangle) -> f64 {
+    x.calc_area()
+}
+
+fn main() {
+    let rect = Rectangle {
+        width: 1.0,
+        height: 2.0,
+    };
+    println!("{}", area(&rect));
 }

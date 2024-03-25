@@ -1,8 +1,9 @@
-fn main() {
-    let m = 1;
-    let add_m = |x| x + m;
-    println!("{}", add_m(2));
+fn func_of_func(b: i32) -> impl Fn(i32) -> i32 {
+    move |a| a + b
+}
 
-    let m = 10;
-    println!("{}", add_m(2));
+fn main() {
+    let add_2 = func_of_func(2);
+    println!("{}", add_2(1));
+    println!("{}", add_2(4));
 }

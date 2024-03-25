@@ -28,8 +28,11 @@ fn div4(x: i32) -> Result<(), Box<dyn MyError>> {
 }
 
 fn main() {
-    println!("{:?}", div4(0));
-    println!("{:?}", div4(1));
-    println!("{:?}", div4(2));
-    println!("{:?}", div4(3));
+    let mut v = Vec::<Box<dyn std::fmt::Debug>>::new();
+    v.push(Box::new(1_i32));
+    v.push(Box::new(2_i32));
+    v.push(Box::new(3.0_f64));
+    v.push(Box::new(String::from("Hello")));
+
+    println!("{:?}", v);
 }

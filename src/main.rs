@@ -1,9 +1,24 @@
-fn func_of_func(b: i32) -> impl Fn(i32) -> i32 {
-    move |a| a + b
+fn insert(x: i32, xs: &[i32]) -> Vec<i32> {
+    match xs {
+        [y, ys @ ..] => {
+            if x <= *y {
+                [&[x][..], xs].concat()
+            } else {
+                [&[*y][..], &insert(x, ys)].concat()
+            }
+        }
+        [] => vec![x],
+    }
 }
 
 fn main() {
-    let add_2 = func_of_func(2);
-    println!("{}", add_2(1));
-    println!("{}", add_2(4));
+    let v = Vec::new();
+    let v = insert(2, &v);
+    println!("{:?}", v);
+
+    let v = insert(1, &v);
+    println!("{:?}", v);
+
+    let v = insert(3, &v);
+    println!("{:?}", v);
 }

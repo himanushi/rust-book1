@@ -1,11 +1,4 @@
-fn fact(n: u32) -> u32 {
-    if n == 0 {
-        1
-    } else {
-        n * fact(n - 1)
-    }
-}
-
 fn main() {
-    println!("{}", fact(5))
+    let v: Vec<i32> = vec![1, 2, 3, 4, 5].into_iter().map(|x| x + 1).collect();
+    println!("{:?}", v)
 }

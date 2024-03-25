@@ -1,5 +1,8 @@
 fn main() {
-    let add_one = |x: i32| -> i32 { x + 1 };
-    let v: Vec<i32> = vec![1, 2, 3, 4, 5].into_iter().map(add_one).collect();
-    println!("{:?}", v)
+    let m = 1;
+    let add_m = |x| x + m;
+    println!("{}", add_m(2));
+
+    let m = 10;
+    println!("{}", add_m(2));
 }
